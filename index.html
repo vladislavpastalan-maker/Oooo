@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XXX Tube — Порно сайт</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0d0d0d;
+      color: #eee;
+      line-height: 1.5;
+    }
+    a { color: #ff4d6d; text-decoration: none; }
+    a:hover { color: #ff7a93; }
+
+    /* Header */
+    header {
+      background: #1a1a1a;
+      border-bottom: 2px solid #ff4d6d;
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ff4d6d;
+      letter-spacing: 1px;
+    }
+    .logo span { color: #fff; }
+    nav { display: flex; gap: 16px; flex-wrap: wrap; }
+    nav a {
+      color: #ccc;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    nav a:hover { color: #ff4d6d; }
+    .search-box {
+      margin-left: auto;
+      display: flex;
+    }
+    .search-box input {
+      background: #2a2a2a;
+      border: 1px solid #444;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 6px 0 0 6px;
+      width: 220px;
+      outline: none;
+    }
+    .search-box button {
+      background: #ff4d6d;
+      border: none;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Main layout */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 24px;
+    }
+    @media (max-width: 900px) {
+      .container { grid-template-columns: 1fr; }
+      .sidebar { order: -1; }
+    }
+
+    /* Player */
+    .player-section h2 {
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+    }
+    .player-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+    .player-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .video-title {
+      margin-top: 12px;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    .video-meta {
+      color: #999;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    /* Grid */
+    .grid-section { margin-top: 32px; }
+    .grid-section h2 {
+      margin-bottom: 16px;
+      font-size: 1.25rem;
+      border-left: 4px solid #ff4d6d;
+      padding-left: 10px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .video-card {
+      background: #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #2a2a2a;
+    }
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.25);
+      border-color: #ff4d6d;
+    }
+    .thumb {
+      position: relative;
+      padding-top: 56.25%;
+      background: #111;
+    }
+    .thumb img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .duration {
+      position: absolute;
+      bottom: 6px; right: 6px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .card-info {
+      padding: 10px 12px;
+    }
+    .card-info h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-info p {
+      color: #888;
+      font-size: 0.8rem;
+      margin-top: 4px;
+    }
+
+    /* Sidebar */
+    .sidebar h3 {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      color: #ff4d6d;
+    }
+    .categories {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .categories a {
+      display: block;
+      background: #1a1a1a;
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: #ccc;
+      font-size: 0.9rem;
+      border: 1px solid #2a2a2a;
+    }
+    .categories a:hover {
+      background: #ff4d6d;
+      color: #fff;
+      border-color: #ff4d6d;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #666;
+      font-size: 0.85rem;
+      border-top: 1px solid #222;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">XXX<span>Tube</span></div>
+  <nav>
+    <a href="#">Головна</a>
+    <a href="#">Нові</a>
+    <a href="#">Популярні</a>
+    <a href="#">Категорії</a>
+    <a href="#">Порнозірки</a>
+  </nav>
+  <div class="search-box">
+    <input type="text" placeholder="Пошук відео...">
+    <button>🔍</button>
+  </div>
+</header>
+
+<div class="container">
+  <main>
+    <!-- Головний плеєр -->
+    <section class="player-section">
+      <h2>Зараз дивишся</h2>
+      <div class="player-wrapper">
+        <iframe id="mainPlayer" 
+                src="https://www.pornhub.com/embed/ph5ac81eabe203d" 
+                allowfullscreen 
+                allow="autoplay; encrypted-media">
+        </iframe>
+      </div>
+      <div class="video-title" id="mainTitle">Susie Sheep Fucks Peppa Pig (мем)</div>
+      <div class="video-meta">Pornhub • HD</div>
+    </section>
+
+    <!-- Сітка відео -->
+    <section class="grid-section">
+      <h2>Рекомендовані відео</h2>
+      <div class="video-grid" id="videoGrid">
+        <!-- Картки додаються через JS -->
+      </div>
+    </section>
+  </main>
+
+  <aside class="sidebar">
+    <h3>Категорії</h3>
+    <ul class="categories">
+      <li><a href="#">Аматори</a></li>
+      <li><a href="#">Анальний</a></li>
+      <li><a href="#">Блондинки</a></li>
+      <li><a href="#">Брюнетки</a></li>
+      <li><a href="#">Великі сиськи</a></li>
+      <li><a href="#">Груповуха</a></li>
+      <li><a href="#">Лесбійки</a></li>
+      <li><a href="#">Мілфи</a></li>
+      <li><a href="#">Публічний</a></li>
+      <li><a href="#">Російське</a></li>
+      <li><a href="#">Українське</a></li>
+      <li><a href="#">Хентай</a></li>
+    </ul>
+  </aside>
+</div>
+
+<footer>
+  © 2026 XXXTube — Тільки для дорослих 18+<br>
+  Усі відео належать їхнім правовласникам. Це демонстраційний макет.
+</footer>
+
+<script>
+  // Реальні відео з Pornhub (viewkey)
+  const videos = [
+    {
+      id: "ph5ac81eabe203d",
+      title: "Susie Sheep Fucks Peppa Pig (мем)",
+      duration: "0:44",
+      thumb: "https://ei.phncdn.com/videos/201804/07/161102592/original/(m=eaf8Ggaaaa)(mh=mDMLboeH6vZKEuOI)12.jpg"
+    },
+    {
+      id: "648719015",
+      title: "Seductive Indian beauty strips and fingers",
+      duration: "6:01",
+      thumb: "https://ei.phncdn.com/videos/201306/28/123456/original/12.jpg"
+    },
+    {
+      id: "6ac653e528271",
+      title: "Taking Care of a Horny Blonde",
+      duration: "12:30",
+      thumb: "https://ei.phncdn.com/videos/202410/06/567890/original/12.jpg"
+    },
+    {
+      id: "ph610900ba12c24",
+      title: "Hot poolside action",
+      duration: "4:00",
+      thumb: "https://ei.phncdn.com/videos/202106/15/234567/original/12.jpg"
+    },
+    {
+      id: "1849749437",
+      title: "Classic hardcore scene",
+      duration: "15:20",
+      thumb: "https://ei.phncdn.com/videos/201901/10/345678/original/12.jpg"
+    },
+    {
+      id: "ph620db5684b23d",
+      title: "A GAROTA GOSTOSA O CONVIDOU",
+      duration: "6:00",
+      thumb: "https://ei.phncdn.com/videos/202202/20/456789/original/12.jpg"
+    }
+  ];
+
+  const grid = document.getElementById('videoGrid');
+  const player = document.getElementById('mainPlayer');
+  const titleEl = document.getElementById('mainTitle');
+
+  // Створюємо картки
+  videos.forEach(v => {
+    const card = document.createElement('div');
+    card.className = 'video-card';
+    card.innerHTML = `
+      <div class="thumb">
+        <img src="\( {v.thumb}" alt=" \){v.title}" onerror="this.src='https://via.placeholder.com/320x180/1a1a1a/ff4d6d?text=Video'">
+        <span class="duration">${v.duration}</span>
+      </div>
+      <div class="card-info">
+        <h3>${v.title}</h3>
+        <p>Pornhub • HD</p>
+      </div>
+    `;
+    card.addEventListener('click', () => {
+      player.src = `https://www.pornhub.com/embed/${v.id}`;
+      titleEl.textContent = v.title;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+        </html>
